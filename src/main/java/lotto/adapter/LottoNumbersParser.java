@@ -9,7 +9,7 @@ public final class LottoNumbersParser {
     }
 
     public static List<Integer> parseCommaSeparatedInts(String input) {
-        if (input == null) {
+        if (input == null || input.isBlank()) {
             throw new IllegalArgumentException("[ERROR] 번호를 입력하세요.");
         }
         List<Integer> ints = Arrays.stream(input.split(","))
