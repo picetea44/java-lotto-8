@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.ErrorMessages;
 
 public final class Money {
-    private static final int UNIT = 1000;
     private final long amount;
 
     private Money(long amount) {
@@ -15,17 +14,10 @@ public final class Money {
         if (amount <= 0) {
             throw new IllegalArgumentException(ErrorMessages.MONEY_MUST_BE_POSITIVE);
         }
-        if (amount % UNIT != 0) {
-            throw new IllegalArgumentException(ErrorMessages.MONEY_MUST_BE_UNIT);
-        }
     }
 
     public static Money of(long amount) {
         return new Money(amount);
-    }
-
-    public int ticketCount() {
-        return (int) (amount / UNIT);
     }
 
     public long amount() {

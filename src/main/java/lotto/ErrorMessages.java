@@ -12,7 +12,9 @@ public final class ErrorMessages {
 
     // Money 관련
     public static final String MONEY_MUST_BE_POSITIVE = "[ERROR] 금액은 양의 정수여야 합니다.";
-    public static final String MONEY_MUST_BE_UNIT = "[ERROR] 금액은 1000원 단위여야 합니다.";
+
+    // LottoPurchaseAmount 관련
+    public static final String LOTTO_PURCHASE_MUST_BE_UNIT = "[ERROR] 금액은 1000원 단위여야 합니다.";
 
     // WinningNumbers 관련
     public static final String BONUS_DUPLICATE = "[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.";

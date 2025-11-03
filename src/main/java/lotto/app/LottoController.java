@@ -20,8 +20,8 @@ public final class LottoController {
     }
 
     public void run() {
-        Money money = readMoney();
-        List<Lotto> tickets = new TicketIssuer(numberSource).issue(money);
+        LottoPurchaseAmount purchaseAmount = readPurchaseAmount();
+        List<Lotto> tickets = new TicketIssuer(numberSource).issue(purchaseAmount);
         Output.printPurchased(tickets.size());
         Output.printTickets(tickets);
 
@@ -32,19 +32,19 @@ public final class LottoController {
         Output.printStats(counts);
 
         long totalPrize = ProfitCalculator.totalPrize(counts);
-        double yield = ProfitCalculator.yieldPercent(totalPrize, money.amount());
+        double yield = ProfitCalculator.yieldPercent(totalPrize, purchaseAmount.amount());
         Output.printYield(yield);
 
         Console.close(); // missionutils 권장
     }
 
-    private Money readMoney() {
+    private LottoPurchaseAmount readPurchaseAmount() {
         while (true) {
             try {
                 System.out.println("구입금액을 입력해 주세요.");
                 String raw = Console.readLine();
-                long amount = MoneyParser.parsePositiveLongStrict(raw); // 형식
-                return Money.of(amount); // 도메인 규칙
+                long amount = MoneyParser.parsePositiveLongStrict(raw); // 형식 검증
+                return LottoPurchaseAmount.of(amount); // 로또 구매 규칙 검증
             } catch (IllegalArgumentException e) {
                 Output.printError(e.getMessage());
             }
