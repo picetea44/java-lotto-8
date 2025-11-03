@@ -35,7 +35,6 @@ public final class LottoController {
         double yield = ProfitCalculator.yieldPercent(totalPrize, purchaseAmount.amount());
         Output.printYield(yield);
 
-        Console.close(); // missionutils 권장
     }
 
     private LottoPurchaseAmount readPurchaseAmount() {

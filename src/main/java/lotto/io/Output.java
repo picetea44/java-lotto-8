@@ -3,7 +3,6 @@ package lotto.io;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -28,11 +27,10 @@ public final class Output {
     }
 
     public static void printStats(Map<Rank, Long> counts) {
-        System.out.printf("3개 일치 (5,000원) - %d개%n", counts.getOrDefault(Rank.FIFTH, 0L));
-        System.out.printf("4개 일치 (50,000원) - %d개%n", counts.getOrDefault(Rank.FOURTH, 0L));
-        System.out.printf("5개 일치 (1,500,000원) - %d개%n", counts.getOrDefault(Rank.THIRD, 0L));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n", counts.getOrDefault(Rank.SECOND, 0L));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개%n", counts.getOrDefault(Rank.FIRST, 0L));
+        for (Rank rank : List.of(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST)) {
+            long count = counts.getOrDefault(rank, 0L);
+            System.out.printf("%s - %d개%n", rank.getDescription(), count);
+        }
     }
 
     public static void printYield(double percent) {

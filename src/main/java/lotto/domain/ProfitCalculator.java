@@ -8,7 +8,7 @@ public final class ProfitCalculator {
 
     public static long totalPrize(Map<Rank, Long> counts) {
         return counts.entrySet().stream()
-                .mapToLong(e -> e.getKey().prize * e.getValue())
+                .mapToLong(e -> e.getKey().getPrize() * e.getValue())
                 .sum();
     }
 
