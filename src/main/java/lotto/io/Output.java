@@ -36,7 +36,7 @@ public final class Output {
     }
 
     public static void printYield(double percent) {
-        System.out.printf("총 수익률은 %.1f%%%n", percent);
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", percent);
     }
 
     public static void printError(String msg) {

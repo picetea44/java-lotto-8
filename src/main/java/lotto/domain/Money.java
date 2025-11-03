@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.ErrorMessages;
+
 public final class Money {
     private static final int UNIT = 1000;
     private final long amount;
@@ -11,10 +13,10 @@ public final class Money {
 
     private static void validate(long amount) {
         if (amount <= 0) {
-            throw new IllegalArgumentException("[ERROR] 금액은 양의 정수여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessages.MONEY_MUST_BE_POSITIVE);
         }
         if (amount % UNIT != 0) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessages.MONEY_MUST_BE_UNIT);
         }
     }
 
