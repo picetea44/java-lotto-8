@@ -15,7 +15,7 @@ public final class TicketIssuer {
         int n = purchaseAmount.ticketCount();
         List<Lotto> tickets = new ArrayList<>(n);
         for (int i = 0; i < n; i++) {
-            tickets.add(new Lotto(source.drawSix())); // Lotto 생성자에서 규칙 재검증
+            tickets.add(new Lotto(source.drawSix()));
         }
         return tickets;
     }
